@@ -6,10 +6,10 @@ import logo from '../assets/images/logo.svg'
 import { DivAuth } from '../styles/auth'
 import { Button } from '../components/Botton/'
 import { useContext } from 'react'
-import { AuthContext } from '../App'
+import { AuthContext } from '../contexts/AuthContext'
 
 export function NewRoom() {
-  const { user } = useContext(AuthContext)
+  // const { user } = useContext(AuthContext)
   return (
     <DivAuth id="page-auth">
       <aside>
@@ -25,7 +25,6 @@ export function NewRoom() {
         
         <div className="main-content">
           <img src={logo} alt="Letmeask" />
-          <h1>{user?.name}</h1>
           <h2>criar uma nova sala</h2>    
           <form action="">
             <input

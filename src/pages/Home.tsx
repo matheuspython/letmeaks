@@ -9,7 +9,7 @@ import { DivAuth } from '../styles/auth'
 import { Button } from '../components/Botton/'
 
 import { auth, firebase } from '../services/firebase'
-import { AuthContext } from '../App'
+import { AuthContext } from '../contexts/AuthContext'
 
 
 export function Home() {
