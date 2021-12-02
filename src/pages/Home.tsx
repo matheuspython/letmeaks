@@ -1,4 +1,3 @@
-import { useContext } from 'react'
 import { useHistory } from 'react-router'
 
 import illustration from '../assets/images/illustration.svg'
@@ -8,13 +7,13 @@ import googleIcon from '../assets/images/google-icon.svg'
 import { DivAuth } from '../styles/auth'
 import { Button } from '../components/Botton/'
 
-import { auth, firebase } from '../services/firebase'
-import { AuthContext } from '../contexts/AuthContext'
+import { useAuth } from '../hooks/useAuths'
+import { FormEvent } from 'react'
 
 
 export function Home() {
   const history = useHistory();
-  const { signWithGoogle, user } = useContext(AuthContext)
+  const { signWithGoogle, user } = useAuth()
   async function handleCreateRoom() {
     if(!user){
       signWithGoogle()
@@ -22,6 +21,9 @@ export function Home() {
       history.push('/rooms/new')
   }
   
+  async function handleJoinRoom(event: FormEvent){
+    event.preventDefault()
+  }
 
   return (
     <DivAuth id="page-auth">
@@ -42,7 +44,7 @@ export function Home() {
             Crie sua sala com o Google
           </button>
           <div className="separator">entre em uma sala</div>
-          <form action="">
+          <form onSubmit={handleJoinRoom}>
             <input
               placeholder="Digite o código da sala"
               type="text" 
