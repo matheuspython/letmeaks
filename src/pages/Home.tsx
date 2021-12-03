@@ -8,10 +8,12 @@ import { DivAuth } from '../styles/auth'
 import { Button } from '../components/Botton/'
 
 import { useAuth } from '../hooks/useAuths'
-import { FormEvent } from 'react'
+import { FormEvent, useState } from 'react'
+import { database } from '../services/firebase'
 
 
 export function Home() {
+  const [roomCode, setRoomCode] = useState('')
   const history = useHistory();
   const { signWithGoogle, user } = useAuth()
   async function handleCreateRoom() {
@@ -23,6 +25,17 @@ export function Home() {
   
   async function handleJoinRoom(event: FormEvent){
     event.preventDefault()
+
+    if(roomCode.trim() === ''){
+      return
+    }
+    const roomRef = await database.ref(`rooms/${roomCode}`).get()
+    if(!roomRef.exists()){
+      alert('Room does not exist')
+      return
+    }
+    history.push(`/rooms/${roomCode}`)
+
   }
 
   return (
@@ -46,8 +59,9 @@ export function Home() {
           <div className="separator">entre em uma sala</div>
           <form onSubmit={handleJoinRoom}>
             <input
-              placeholder="Digite o código da sala"
               type="text" 
+              placeholder="Digite o código da sala"
+              onChange={event => setRoomCode(event.target.value)}
             />
             <Button type="submit">
               Entrar na sala
