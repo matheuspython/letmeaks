@@ -92,5 +92,8 @@ export const Container = styled.div`
         }
       }
     }
+    .question-list{
+      margin-top:32px;
+    }
   }
 `;

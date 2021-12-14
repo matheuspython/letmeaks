@@ -7,6 +7,7 @@ import { Button } from '../components/Botton'
 import { RoomCode } from '../components/RoomCode'
 import { useAuth } from '../hooks/useAuths'
 import { database } from '../services/firebase'
+import Question from '../components/Question'
 
 type FirebaseQuestions = Record<string, {
   author: {
@@ -113,7 +114,17 @@ export function Room() {
             <Button disabled={!user} type="submit">Enviar pergunta</Button>
           </div>
         </form>
-        {JSON.stringify(questions)}
+        <div className="question-list">
+          {questions.map(question =>{
+            return(
+              <Question 
+              key={question.id}
+                content={question.content}
+                author={question.author}              
+              />
+            )
+          })}
+        </div>
       </main>
     </Container>
   )
