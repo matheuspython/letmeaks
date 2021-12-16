@@ -13,6 +13,13 @@ export const Container = styled.div`
       >img{
         min-height: 45px;
       }
+      >div{
+        display:flex;
+        gap:16px;
+        button{
+          height:40px;
+        }
+      }
     }
   }
   main{

@@ -34,9 +34,15 @@ export const Container = styled.div`
             color:#737380;
             font-size:14px; 
           }
-      
-        
-      }
-    
+        }
+        button{
+          border: 0;
+          background: transparent;
+          cursor: pointer;
+          &.like-button{
+            display: flex;
+            align-items:flex-end;
+          }
+        }
   
 `;

@@ -20,7 +20,11 @@ export const Container = styled.button`
       img {
         margin-right: 8px;
       }
-
+      &.outlined{
+        background: #fff;
+        border: 1px solid #835afd;
+        color: #835afd;
+      }
       &:not(:disabled):hover{
         filter: brightness(0.9);
       }

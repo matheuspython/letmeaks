@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { Container } from './styles';
 type QuestionProps = {
@@ -6,12 +6,14 @@ type QuestionProps = {
   author: {
     name: string;
     avatar: string;
-  }
+  };
+  children?: ReactNode
 }
 
 const Question = ({
   content,
-  author
+  author,
+  children
 }: QuestionProps) => {
   return (
   <Container className="question">
@@ -21,7 +23,7 @@ const Question = ({
         <img src={author.avatar} alt={author.name} />
         <span>{author.name}</span>
       </div>
-      <div></div>
+      <div> {children} </div>
     </footer>
   </Container>  
   )
