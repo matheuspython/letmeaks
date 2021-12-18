@@ -39,9 +39,21 @@ export const Container = styled.div`
           border: 0;
           background: transparent;
           cursor: pointer;
+          transition: 0.2s;
           &.like-button{
             display: flex;
             align-items:flex-end;
+            color:#737380;
+            gap:8px;
+            &.like{
+              color:#835afd;
+              svg path{
+                stroke: #835afd;
+              }
+            }
+           &:hover{
+             filter:brightness(0.7);
+           } 
           }
         }
   
