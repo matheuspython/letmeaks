@@ -10,7 +10,17 @@ export const Container = styled.div`
     & + .question{
       margin-top:8px;
     }
+    &.highlighted{
+      background: #f4f0ff;
+      border: 1px solid #833afd;
+      footer .user-info span {
+        color: #29292e;
+      }
+    }
+    &.answered{
+      background: #dbdcdd;
 
+    }
     p{
       color:#29292e;
     }
@@ -34,6 +44,10 @@ export const Container = styled.div`
             color:#737380;
             font-size:14px; 
           }
+        }
+        > div{
+          display:flex;
+          gap:16px;
         }
         button{
           border: 0;
